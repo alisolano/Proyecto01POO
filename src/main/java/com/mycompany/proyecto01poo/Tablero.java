@@ -4,10 +4,6 @@
  */
 package com.mycompany.proyecto01poo;
 
-/**
- *
- * @author Alison
- */
 public class Tablero {
     
 }
