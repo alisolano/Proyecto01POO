@@ -4,6 +4,7 @@ public class Tablero {
     private Matriz casillas;
     private boolean casillaOcupada;
     private boolean turnoBlanca;
+    private Ficha fichas;
 
     public Tablero(Matriz casillas, boolean casillaOcupada, boolean turnoBlanca) {
         this.casillas = casillas;
