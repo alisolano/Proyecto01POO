@@ -13,7 +13,7 @@ public abstract class Ficha {
     private Ficha fichaActual;
     private int posicionActual;
     private int nuevaPosicion;
-    private Tablero tablero;
+    //private Tablero tablero;
 
     // Constructor
     public Ficha(String nombre, boolean disponibilidad, Ficha actualFicha) {
