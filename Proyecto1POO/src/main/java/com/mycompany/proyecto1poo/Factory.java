@@ -8,9 +8,6 @@ package com.mycompany.proyecto1poo;
  *
  * @author JP113
  */
-public abstract class Ficha {
-    // Métodos abstractos y otros atributos...
-    public abstract boolean validarMovimiento();
+public interface Factory {
+    Ficha crearFicha();
 }
-
-
