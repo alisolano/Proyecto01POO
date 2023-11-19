@@ -7,6 +7,7 @@ package com.mycompany.proyecto1poo;
 import static com.mycompany.proyecto1poo.Tablero.tablero;
 import java.awt.event.ActionEvent;
 import GUI.VistaTablero;
+import javax.swing.JButton;
 
 
 /**
@@ -16,14 +17,18 @@ import GUI.VistaTablero;
 public class Ajedrez {
     private static Ajedrez instancia = null;
     private Factory factory;
-    private Tablero tablero;
+    private Tablero tableroins;
     private char turnoJugador = 'A';
+    private String posicionAntigua = null;
+    private String posicionNueva = null;
+    private String posicionActual;
+    public static String fichaElegida;
 
     private Ajedrez() {
         // Puedes inicializar el factory aquí o pasarlo como parámetro al constructor
         this.factory = new FichaFactory();
-        this.tablero = new Tablero();
-        tablero.iniciarTablero();
+        this.tableroins = new Tablero();
+        tableroins.iniciarTablero();
         VistaTablero vista = new VistaTablero();
         vista.setVisible(true);
         //añadirActionEvents();
@@ -43,7 +48,20 @@ public class Ajedrez {
     
     //@Override
     public void actionPerformed(ActionEvent ae) {
+        if (turnoJugador == 'A') {
+            posicionActual = getBotonPosicionString(ae.getSource());
 
+            if (comprobarSiLaFichaEsBlanca(posicionActual)) {
+                posicionAntigua = posicionActual;
+            } else if (posicionAntigua != null) {
+                posicionNueva = posicionActual;
+                    cambiarFichas(posicionAntigua, posicionNueva);
+                    posicionNueva = null;
+                    posicionAntigua = null;
+                    //turnoMaquina();
+                    //comprobarJaqueMateHaciaBlancas();
+            }
+        }
     }
     
     private String getBotonPosicionString(Object boton) {
@@ -178,4 +196,170 @@ public class Ajedrez {
         }
         return null;
     }
+    
+    private void cambiarFichas(String posAntigua, String posNueva) {
+        cambiarEnString(posAntigua, posNueva);
+        cambiarEnPantalla(posAntigua, posNueva);
+
+    }
+        
+    private JButton boton(String posicion) {
+        if (posicion.equals("00")) {
+            return VistaTablero.c00;
+        } else if (posicion.equals("01")) {
+            return VistaTablero.c01;
+        } else if (posicion.equals("02")) {
+            return VistaTablero.c02;
+        } else if (posicion.equals("03")) {
+            return VistaTablero.c03;
+        } else if (posicion.equals("04")) {
+            return VistaTablero.c04;
+        } else if (posicion.equals("05")) {
+            return VistaTablero.c05;
+        } else if (posicion.equals("06")) {
+            return VistaTablero.c06;
+        } else if (posicion.equals("07")) {
+            return VistaTablero.c07;
+        } else if (posicion.equals("10")) {
+            return VistaTablero.c10;
+        } else if (posicion.equals("11")) {
+            return VistaTablero.c11;
+        } else if (posicion.equals("12")) {
+            return VistaTablero.c12;
+        } else if (posicion.equals("13")) {
+            return VistaTablero.c13;
+        } else if (posicion.equals("14")) {
+            return VistaTablero.c14;
+        } else if (posicion.equals("15")) {
+            return VistaTablero.c15;
+        } else if (posicion.equals("16")) {
+            return VistaTablero.c16;
+        } else if (posicion.equals("17")) {
+            return VistaTablero.c17;
+        } else if (posicion.equals("20")) {
+            return VistaTablero.c20;
+        } else if (posicion.equals("21")) {
+            return VistaTablero.c21;
+        } else if (posicion.equals("22")) {
+            return VistaTablero.c22;
+        } else if (posicion.equals("23")) {
+            return VistaTablero.c23;
+        } else if (posicion.equals("24")) {
+            return VistaTablero.c24;
+        } else if (posicion.equals("25")) {
+            return VistaTablero.c25;
+        } else if (posicion.equals("26")) {
+            return VistaTablero.c26;
+        } else if (posicion.equals("27")) {
+            return VistaTablero.c27;
+        } else if (posicion.equals("30")) {
+            return VistaTablero.c30;
+        } else if (posicion.equals("31")) {
+            return VistaTablero.c31;
+        } else if (posicion.equals("32")) {
+            return VistaTablero.c32;
+        } else if (posicion.equals("33")) {
+            return VistaTablero.c33;
+        } else if (posicion.equals("34")) {
+            return VistaTablero.c34;
+        } else if (posicion.equals("35")) {
+            return VistaTablero.c35;
+        } else if (posicion.equals("36")) {
+            return VistaTablero.c36;
+        } else if (posicion.equals("37")) {
+            return VistaTablero.c37;
+        } else if (posicion.equals("40")) {
+            return VistaTablero.c40;
+        } else if (posicion.equals("41")) {
+            return VistaTablero.c41;
+        } else if (posicion.equals("42")) {
+            return VistaTablero.c42;
+        } else if (posicion.equals("43")) {
+            return VistaTablero.c43;
+        } else if (posicion.equals("44")) {
+            return VistaTablero.c44;
+        } else if (posicion.equals("45")) {
+            return VistaTablero.c45;
+        } else if (posicion.equals("46")) {
+            return VistaTablero.c46;
+        } else if (posicion.equals("47")) {
+            return VistaTablero.c47;
+        } else if (posicion.equals("50")) {
+            return VistaTablero.c50;
+        } else if (posicion.equals("51")) {
+            return VistaTablero.c51;
+        } else if (posicion.equals("52")) {
+            return VistaTablero.c52;
+        } else if (posicion.equals("53")) {
+            return VistaTablero.c53;
+        } else if (posicion.equals("54")) {
+            return VistaTablero.c54;
+        } else if (posicion.equals("55")) {
+            return VistaTablero.c55;
+        } else if (posicion.equals("56")) {
+            return VistaTablero.c56;
+        } else if (posicion.equals("57")) {
+            return VistaTablero.c57;
+        } else if (posicion.equals("60")) {
+            return VistaTablero.c60;
+        } else if (posicion.equals("61")) {
+            return VistaTablero.c61;
+        } else if (posicion.equals("62")) {
+            return VistaTablero.c62;
+        } else if (posicion.equals("63")) {
+            return VistaTablero.c63;
+        } else if (posicion.equals("64")) {
+            return VistaTablero.c64;
+        } else if (posicion.equals("65")) {
+            return VistaTablero.c65;
+        } else if (posicion.equals("66")) {
+            return VistaTablero.c66;
+        } else if (posicion.equals("67")) {
+            return VistaTablero.c67;
+        } else if (posicion.equals("70")) {
+            return VistaTablero.c70;
+        } else if (posicion.equals("71")) {
+            return VistaTablero.c71;
+        } else if (posicion.equals("72")) {
+            return VistaTablero.c72;
+        } else if (posicion.equals("73")) {
+            return VistaTablero.c73;
+        } else if (posicion.equals("74")) {
+            return VistaTablero.c74;
+        } else if (posicion.equals("75")) {
+            return VistaTablero.c75;
+        } else if (posicion.equals("76")) {
+            return VistaTablero.c76;
+        } else if (posicion.equals("77")) {
+            return VistaTablero.c77;
+        }
+        return null;
+    }
+        
+    
+    private boolean comprobarSiLaFichaEsBlanca(String posicion) {
+        int x = Character.getNumericValue(posicion.charAt(1));
+        int y = Character.getNumericValue(posicion.charAt(0));
+        if (!tablero[y][x].equals("")) {
+            return (tablero[y][x].charAt(0) == 'A') ? true : false;
+        }
+        return false;
+    }
+    
+    private void cambiarEnString(String posAntigua, String posNueva) {
+        int xA = Character.getNumericValue(posAntigua.charAt(1));
+        int yA = Character.getNumericValue(posAntigua.charAt(0));
+
+        int xN = Character.getNumericValue(posNueva.charAt(1));
+        int yN = Character.getNumericValue(posNueva.charAt(0));
+               
+        tablero[yN][xN] = tablero[yA][xA];
+        tablero[yA][xA] = "";
+    }
+
+    private void cambiarEnPantalla(String posAntigua, String posNueva) {
+        boton(posNueva).setIcon(boton(posAntigua).getIcon());
+        boton(posAntigua).setIcon(null);
+    }
+    
 }
