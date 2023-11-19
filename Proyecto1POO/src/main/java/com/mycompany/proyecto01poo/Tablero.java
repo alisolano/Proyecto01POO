@@ -1,17 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.proyecto1poo;
+package com.mycompany.proyecto01poo;
 
-import java.awt.event.ActionEvent;
-
-/**
- *
- * @author JP113
- */
 public class Tablero {
-    public static String[][] tablero = new String[8][8];
+    
+    
+   public static String[][] tablero = new String[8][8];
 
     
    void iniciarTablero() {
@@ -44,9 +36,34 @@ public class Tablero {
         tablero[7][6] = "A_caballo";
         tablero[7][7] = "A_torre";
     }
-   
-   
+    
+    
+    //private Matriz casillas;
+    private boolean casillaOcupada;
+    private boolean turnoBlanca;
+    private Ficha fichas;
 
+    public Tablero(boolean casillaOcupada, boolean turnoBlanca) {
+       //this.casillas = casillas;
+        this.casillaOcupada = casillaOcupada;
+        this.turnoBlanca = turnoBlanca;
+    }
+
+    public boolean getCasillaOcupada() {
+        return casillaOcupada;
+    }
+
+    public void setCasillaOcupada(boolean casillaOcupada) {//el parametro deberia ser la casilla?
+        this.casillaOcupada = casillaOcupada;
+    }
+
+    public boolean getTurnoBlanca() {
+        return turnoBlanca;
+    }
+
+    public void setTurnoBlanca(boolean turnoBlanca) {
+        this.turnoBlanca = turnoBlanca;
+    }
     
     
 }

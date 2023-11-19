@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.proyecto1poo;
+package com.mycompany.proyecto01poo;
 
-import static com.mycompany.proyecto1poo.Tablero.tablero;
+import static com.mycompany.proyecto01poo.Tablero.tablero;
 import java.awt.event.ActionEvent;
 import GUI.VistaTablero;
 import javax.swing.JButton;
@@ -27,7 +27,7 @@ public class Ajedrez {
     private Ajedrez() {
         // Puedes inicializar el factory aquí o pasarlo como parámetro al constructor
         this.factory = new FichaFactory();
-        this.tableroins = new Tablero();
+        this.tableroins = new Tablero(boolean casillaOcupada, boolean turnoBlanca);
         tableroins.iniciarTablero();
         VistaTablero vista = new VistaTablero();
         vista.setVisible(true);
@@ -340,8 +340,8 @@ public class Ajedrez {
     private boolean comprobarSiLaFichaEsBlanca(String posicion) {
         int x = Character.getNumericValue(posicion.charAt(1));
         int y = Character.getNumericValue(posicion.charAt(0));
-        if (!tablero[y][x].equals("")) {
-            return (tablero[y][x].charAt(0) == 'A') ? true : false;
+        if (!tableroins.tablero[y][x].equals("")) {
+            return (tableroins.tablero[y][x].charAt(0) == 'A') ? true : false;
         }
         return false;
     }
@@ -353,8 +353,8 @@ public class Ajedrez {
         int xN = Character.getNumericValue(posNueva.charAt(1));
         int yN = Character.getNumericValue(posNueva.charAt(0));
                
-        tablero[yN][xN] = tablero[yA][xA];
-        tablero[yA][xA] = "";
+        tableroins.tablero[yN][xN] = tableroins.tablero[yA][xA];
+        tableroins.tablero[yA][xA] = "";
     }
 
     private void cambiarEnPantalla(String posAntigua, String posNueva) {
