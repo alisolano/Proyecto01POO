@@ -4,7 +4,6 @@
  */
 package com.mycompany.proyecto01poo;
 
-import static com.mycompany.proyecto01poo.Tablero.tablero;
 import java.awt.event.ActionEvent;
 import GUI.VistaTablero;
 import javax.swing.JButton;
@@ -17,22 +16,28 @@ import javax.swing.JButton;
 public class Ajedrez {
     private static Ajedrez instancia = null;
     private Factory factory;
-    private Tablero tableroins;
     private char turnoJugador = 'A';
     private String posicionAntigua = null;
     private String posicionNueva = null;
     private String posicionActual;
     public static String fichaElegida;
+    
+    //instancias de tablero y factory para la generacion de tablero
+    Tablero tablero = new Tablero();
+    Factory fichaFactory = new FichaFactory();
 
-    private Ajedrez() {
+    public Ajedrez() {
         // Puedes inicializar el factory aquí o pasarlo como parámetro al constructor
         this.factory = new FichaFactory();
-        this.tableroins = new Tablero(boolean casillaOcupada, boolean turnoBlanca);
-        tableroins.iniciarTablero();
+        this.tablero = new Tablero(false, true);
+        tablero.iniciarTablero(fichaFactory);
+               
+        tablero.imprimirTablero(); // Imprime el tablero después de la inicialización
+
         VistaTablero vista = new VistaTablero();
         vista.setVisible(true);
         //añadirActionEvents();
-        //movimientos = new Movimientos();
+        //movimientos = new Movimientos();A
     }
     
     // Método para obtener la instancia única de Ajedrez
@@ -340,21 +345,11 @@ public class Ajedrez {
     private boolean comprobarSiLaFichaEsBlanca(String posicion) {
         int x = Character.getNumericValue(posicion.charAt(1));
         int y = Character.getNumericValue(posicion.charAt(0));
-        if (!tableroins.tablero[y][x].equals("")) {
-            return (tableroins.tablero[y][x].charAt(0) == 'A') ? true : false;
-        }
-        return false;
+        return true;
     }
     
     private void cambiarEnString(String posAntigua, String posNueva) {
-        int xA = Character.getNumericValue(posAntigua.charAt(1));
-        int yA = Character.getNumericValue(posAntigua.charAt(0));
 
-        int xN = Character.getNumericValue(posNueva.charAt(1));
-        int yN = Character.getNumericValue(posNueva.charAt(0));
-               
-        tableroins.tablero[yN][xN] = tableroins.tablero[yA][xA];
-        tableroins.tablero[yA][xA] = "";
     }
 
     private void cambiarEnPantalla(String posAntigua, String posNueva) {

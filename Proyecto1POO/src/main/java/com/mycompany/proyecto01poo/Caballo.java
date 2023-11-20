@@ -1,8 +1,11 @@
 package com.mycompany.proyecto01poo;
 
 public class Caballo extends Ficha {
-    public Caballo() {
+    
+    private String nombre;
+    public Caballo(String nombre) {
         super();
+        this.nombre = nombre;
     }
     
     @Override
@@ -12,5 +15,9 @@ public class Caballo extends Ficha {
               Math.abs(casillaFinal - casillaInicial) == 15||
               Math.abs(casillaFinal - casillaInicial) == 17;
     
+    }
+    
+    public String getRepresentation() {
+        return nombre.equals("caballoNegro") ? "♞" : "♘";
     }
 }

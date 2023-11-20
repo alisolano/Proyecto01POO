@@ -11,6 +11,8 @@ package com.mycompany.proyecto01poo;
 public abstract class Ficha {
     // Métodos abstractos y otros atributos...
     public abstract boolean validarMovimiento(int casillaInicial, int casillaFinal);
+    
+    public abstract String getRepresentation();
 }
 
 

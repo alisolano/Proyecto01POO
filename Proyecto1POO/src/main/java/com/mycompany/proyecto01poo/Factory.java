@@ -8,5 +8,15 @@ package com.mycompany.proyecto01poo;
  * @author JP113
  */
 public interface Factory {
-    Ficha crearFicha();
+    Ficha crearFichaPeon(String nombre);
+    
+    Ficha crearFichaTorre(String nombre);
+    
+    Ficha crearFichaCaballo(String nombre);
+    
+    Ficha crearFichaAlfil(String nombre);
+    
+    Ficha crearFichaReina(String nombre);
+    
+    Ficha crearFichaRey(String nombre);
 }

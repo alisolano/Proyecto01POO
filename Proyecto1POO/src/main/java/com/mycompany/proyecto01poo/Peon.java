@@ -1,8 +1,12 @@
 package com.mycompany.proyecto01poo;
 
 public class Peon extends Ficha {
-    public Peon() {
+    
+    private String nombre;
+    
+    public Peon(String nombre) {
         super();
+        this.nombre = nombre;
     }
     
     @Override
@@ -10,7 +14,11 @@ public class Peon extends Ficha {
        return Math.abs(casillaFinal - casillaInicial) % 8 == 0;
     
     }
-
+    
+    public String getRepresentation() {
+        return nombre.equals("peonNegro") ? "♟" : "♙";
+    }
+    
 }
 
 

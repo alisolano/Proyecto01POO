@@ -3,38 +3,63 @@ package com.mycompany.proyecto01poo;
 public class Tablero {
     
     
-   public static String[][] tablero = new String[8][8];
+   private Ficha[][] tablero;
 
+    public Tablero() {
+        tablero = new Ficha[8][8];
+    }
     
-   void iniciarTablero() {
+   void iniciarTablero(Factory fichaFactory) {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                tablero[i][j] = "";
+                tablero[i][j] = null;
             }
         }
 
+        Factory FichaFactory = new FichaFactory();
+        
+        Ficha peonNegro = FichaFactory.crearFichaPeon("peonNegro");
+        Ficha peonBlanco = FichaFactory.crearFichaPeon("peonBlanco");
+        
+        
+        Ficha torreNegro = FichaFactory.crearFichaTorre("torreNegro");
+        Ficha torreBlanco = FichaFactory.crearFichaTorre("torreBlanco");
+        
+        Ficha caballoNegro = FichaFactory.crearFichaCaballo("caballoNegro");
+        Ficha caballoBlanco = FichaFactory.crearFichaCaballo("caballoBlanco");
+        
+        Ficha alfilNegro = FichaFactory.crearFichaAlfil("alfilNegro");
+        Ficha alfilBlanco = FichaFactory.crearFichaAlfil("alfilBlanco");
+        
+        Ficha reinaNegro = FichaFactory.crearFichaReina("reinaNegro");
+        Ficha reinaBlanco = FichaFactory.crearFichaReina("reinaBlanco");
+        
+        Ficha reyNegro = FichaFactory.crearFichaRey("reyNegro");
+        Ficha reyBlanco = FichaFactory.crearFichaRey("reyBlanco");
+        
         for (int i = 0; i < 8; i++) {
-            tablero[1][i] = "B_peon";
-            tablero[6][i] = "A_peon";
+            tablero[1][i] = peonNegro;
+            tablero[6][i] = peonBlanco;
         }
 
-        tablero[0][0] = "B_torre";
-        tablero[0][1] = "B_caballo";
-        tablero[0][2] = "B_alfil";
-        tablero[0][3] = "B_reina";
-        tablero[0][4] = "B_rey";
-        tablero[0][5] = "B_alfil";
-        tablero[0][6] = "B_caballo";
-        tablero[0][7] = "B_torre";
+        
+        tablero[0][0] = torreNegro;
+        tablero[0][1] = caballoNegro;
+        tablero[0][2] = alfilNegro;
+        tablero[0][3] = reinaNegro;
+        tablero[0][4] = reyNegro;
+        tablero[0][5] = alfilNegro;
+        tablero[0][6] = caballoNegro;
+        tablero[0][7] = torreNegro;
 
-        tablero[7][0] = "A_torre";
-        tablero[7][1] = "A_caballo";
-        tablero[7][2] = "A_alfil";
-        tablero[7][3] = "A_reina";
-        tablero[7][4] = "A_rey";
-        tablero[7][5] = "A_alfil";
-        tablero[7][6] = "A_caballo";
-        tablero[7][7] = "A_torre";
+        tablero[7][0] = torreBlanco;
+        tablero[7][1] = caballoBlanco;
+        tablero[7][2] = alfilBlanco;
+        tablero[7][3] = reinaBlanco;
+        tablero[7][4] = reyBlanco;
+        tablero[7][5] = alfilBlanco;
+        tablero[7][6] = caballoBlanco;
+        tablero[7][7] = torreBlanco;
     }
     
     
@@ -63,6 +88,20 @@ public class Tablero {
 
     public void setTurnoBlanca(boolean turnoBlanca) {
         this.turnoBlanca = turnoBlanca;
+    }
+    
+    public void imprimirTablero() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (tablero[i][j] != null) {
+                    System.out.print(tablero[i][j].getRepresentation() + " ");
+                } else {
+                    // Si la casilla está vacía, imprimir un espacio en blanco
+                    System.out.print("  ");
+                }
+            }
+            System.out.println(); // Nueva línea al final de cada fila
+        }
     }
     
     

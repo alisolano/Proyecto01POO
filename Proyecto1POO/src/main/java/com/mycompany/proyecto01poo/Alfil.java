@@ -1,8 +1,11 @@
 package com.mycompany.proyecto01poo;
 
 public class Alfil extends Ficha {
-    public Alfil () {
+    
+    private String nombre;
+    public Alfil(String nombre) {
         super();
+        this.nombre = nombre;
     }
     
     @Override
@@ -10,4 +13,8 @@ public class Alfil extends Ficha {
         return Math.abs(casillaFinal - casillaInicial) % 9 == 0 || 
                Math.abs(casillaFinal - casillaInicial) % 7 == 0;
     }   
+    
+    public String getRepresentation() {
+        return nombre.equals("alfilNegro") ? "♝" : "♗";
+    }
 }
